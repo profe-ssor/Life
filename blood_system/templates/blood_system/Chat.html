@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'blood_system/navbar.html' %}
+    <hr>
+    
+<style>
+    .container{
+        display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    }
+</style>
+    <div class="container">
+
+        <div class="">
+            {% include 'blood_system/topic.html' %}
+           
+        
+     
+            
+        </div>
+
+    <div class="mx-auto">
+
+        
+             <center><h5>{{ room_count }} Rooms Available </h5></center>
+
+            <h5><a href="{% url 'create-talk' %}" style="color: red;">Create Room</a></h5>
+            <p>Hello, {{request.user}}</p>
+            {% if request.user.is_authenticated %}
+            <span><a href="{% url 'logout' %}">Logout</a></span>
+            {% else %}
+            <span><a href="{% url 'login' %}">Login</a></span>
+            {% endif %}
+            <hr>
+        
+    
+    
+
+        
+            
+            {% for room in rooms %}
+            
+                {% if request.user == room.host %}
+                <a href="{% url 'update-talk' room.id %}">Update Room</a> |
+                <a href="{% url 'delete-talk' room.id %}">Delete Room</a>
+               {% endif %}
+        <span>@{{room.host.username}}</span>
+            <h4> <a href="{% url 'room' room.id %}">{{room.title}}</a> </h4>
+            <p>{{room.description}}</p>
+            <small>{{room.topic.name}}</small>
+            <hr>
+        
+            {% endfor %}
+            
+            
+    </div >
+
+
+    <div class="">
+       <center><h3><strong>RECENT FEED</strong></h3></center>
+       <hr>
+        {% for message in room_messages %}
+
+        
+        
+        <small> @{{message.user}} {{message.date_created|timesince}} ago </small>
+        <span>replied to "{{message.room}}" </span>
+       
+        <p>{{message.body}}</p>
+        
+        <hr>
+        {% endfor %}
+    </div>
+    
+
+   
+        
+    </div>
+</body>
+</html>
+
+    

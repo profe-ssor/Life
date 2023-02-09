@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+{% include 'blood_system/navbar.html' %}
+<hr>
+<style>
+    .container{
+        display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    }
+</style>
+<div class="container">
+
+
+    <div class="">
+        {% include 'blood_system/topic.html' %}
+    </div>
+    
+   
+
+    <div class="" style="margin-left: 50px;">
+
+   
+    <h5>{{room.title}}</h5>
+    <p>{{room.description}}</p>
+<hr>
+   
+    <h3 style=" margin-left: 20px; color:darkturquoise "><strong>CONVERSATION</strong></h3>
+    <hr>
+   
+ 
+
+        {% for message in room_messages %}
+
+        <!--<a href ="{% url 'delete_message' message.id  %}"> Delete</a> -->
+        
+        <small> @{{message.user}} {{message.date_created|timesince}}  ago </small>
+        
+       
+        <p>{{message.body}}</p>
+        <hr>
+        {% endfor %}
+   
+    
+        {% if request.user.is_authenticated %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input class="form-control" type="text" name="body" placeholder="Write Your Message Here.....">
+        </form>
+        {% endif %}
+     
+</div>
+
+   <div>
+    <h3>PARTICIPANTS</h3>
+    <hr>
+    {% for user in participants %} 
+    
+    <p><strong> @{{user.username}}</strong></p>
+
+    {% endfor %}<hr>
+</div>
+
+   </div>
+
+<body>
+</html>

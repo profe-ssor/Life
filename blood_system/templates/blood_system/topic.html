@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h3  ><strong>TOPICS</strong></h3>
+        {% if request.user.is_authenticated %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input class="form-control" type="text" name="name" placeholder="Create New Topic.....">
+        </form>
+        {% endif %}
+    </div>
+    <div>
+        
+        <hr>
+        {% for topic in topics %} 
+        
+       <div>
+        <a href="{% url 'chat' %}"> {{topic.name}}</a>
+       </div>
+<hr>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+body{
+    margin:0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover ;
+    color: white;
+    
+}
+
+.container{
+   
+    color: white;
+}
+
+.navigation button a{
+    color: red;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+a{
+    color: white;
+}

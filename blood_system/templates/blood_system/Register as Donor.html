@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'CSS/register_as_donor.css' %}">
+</head>
+<body>
+    {% include 'blood_system/navbar.html' %}
+<div class="container-about">
+    
+    <h1><strong>Become A Donor Now!</strong></h1>
+
+</div><br>
+<div class="container">
+    <div class="cotainer-text" >
+        
+<p>Just let us know that You are willing to save a life, we will send you a blood request in your
+    in your locality through Whatsapp
+</p><br><br>
+
+    <form class="row"  method="POST" action="">
+        
+        {% csrf_token %}
+
+        <div class="col-9">
+            <label class="form-label" for="fname">FIRST NAME</label>
+            <input class="form-control form-control-md alert-dark" type="text" name="first_name" id="fname" placeholder="Enter Your Surname" required>
+        </div> 
+
+        <div class="col-9"><br>
+            <label class="form-label" for="lname">LAST NAME</label>
+            <input class="form-control form-control-md alert-dark" type="text" name="last_name" id="lname" required>
+            
+        </div>
+
+
+        
+        
+        <div class="col-9"><br>
+            <label class="form-label" for="date">DATE OF BIRTH</label>
+            <input  type="date" name="date_of_birth" id="date" class="form-control form-control-md alert-dark" required>
+            
+        </div>
+        
+
+        
+        <div class="col-9"><br>
+            <label class="form-label" for="age">AGE</label>
+            <input  type="text" name="age" id="age" class="form-control form-control-md alert-dark" required>
+            
+        </div>
+
+
+        
+        <div class="col-9"><br>
+            <label class="form-label" for="home">GENDER</label>
+            <select name="gender" id="gender" class="form-control form-control-md alert-dark">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+            
+        </div>
+        
+        <div class="col-9"><br>
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control form-control-md alert-dark" type="email" name="email" id="email" required>
+            
+        </div>
+
+        
+        <div class="col-9"><br>
+            <label class="form-label" for="phone">PHONE</label>
+            <input class="form-control form-control-md alert-dark" type="text"  name="phone" id="phone" required>
+            
+        </div>
+
+        
+        <div class="col-9"><br>
+            <label class="form-label" for="home">ADDRESS</label>
+            <input class="form-control form-control-md alert-dark" type="text" name="address" id="home" required>
+            
+        </div>
+
+        
+        <div class="col-9"><br>
+            <label class="form-label" for="blood_type">BLOOD GROUP</label>
+            <select name="blood_group" id="blood_type" class="form-control form-control-md alert-dark" required>
+                <option value="1"></option>
+                <option value="2">A+</option>
+                <option value="3">A-</option>
+                <option value="3">B+</option>
+                <option value="4">B-</option>
+                <option value="5">AB+</option>
+                <option value="6">AB-</option>
+                <option value="7">O+</option>
+                <option value="8">O-</option>
+                
+            </select>
+        </div>
+        
+        <div class="col-10"><br>
+            <label class="form-label" for="sik">HAVE YOU TESTED POSITVE</label>
+            
+            <select class="form-control" name="sickness" id="sik">
+                <option value="">HIV</option>
+                <option value="">Malaria with in this week</option>
+                <option value="">None</option>
+            </select>
+        </div>
+
+        
+        <div class="col-3"><br>
+            
+            <button type="submit" class="btn btn-primary btn-block">Register As Donor</button>
+            
+        </div>
+
+    </form>
+    </div>
+</div>
+
+
+{% for register in registers %} 
+
+
+<div>
+<p>{{register.first_name}}</p>
+</div>
+
+{% endfor %}
+
+
+</body>
+</html>

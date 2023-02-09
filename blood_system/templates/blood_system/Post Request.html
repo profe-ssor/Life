@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'CSS/post.css' %}">
+</head>
+<body>
+    
+    {% include 'blood_system/navbar.html' %}
+    <hr bg="black">
+   
+    <div class="container" >
+        <div class="text">
+            <center><h5><strong>Request For Blood !</strong></h5>
+                <p>Fill the form to request for blood</p>
+            </center>
+        </div>
+        <form class="row" action="" method="POST">
+            {% csrf_token %}
+
+            <div class="container-content">
+                <div class="row " >
+                    <div class="col-md-5">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" name="title"  class="form-control" id="title" placeholder="title">
+                        
+                    </div>
+                    <div class="col-md-5">
+                        <label for="blood_unit" class="form-label">Blood Unit</label>
+                        <input type="text" name="blood_unit" id="blood_unit" class="form-control" placeholder="Blood Unit">
+                        
+                    </div>
+                    <div class="col-md-5"><br>
+                        <label for="pname" class="form-label">Patient</label>
+                        <input type="text" id="pname" name="patient_name" class="form-control" placeholder="Patient Name">
+                        
+                    </div>
+                    <div class="col-md-5"><br>
+                        <label for="purpose" class="form-label">Purpose</label>
+                        <input type="text" name="purpose" id="purpose" class="form-control" placeholder="Purpose">
+                        
+                    </div>
+        
+        
+                    <div class="col-md-5"><br>
+                        <label for="blood_group" class="form-label">Blood Group</label>
+                        <select name="blood_group" id="blood_group" class="form-control">
+                            <option value="1"></option>
+                            <option value="2">A+</option>
+                            <option value="3">A-</option>
+                            <option value="3">B+</option>
+                            <option value="4">B-</option>
+                            <option value="5">AB+</option>
+                            <option value="6">AB-</option>
+                            <option value="7">O+</option>
+                            <option value="8">O-</option>
+                        </select>
+                        
+                    </div>
+        
+                    <div class="col-md-5"><br>
+                        <label for="phone" class="form-label">Mobile Number</label>
+                        <input type="text" id="phone" name="mobile_number" class="form-control" placeholder="Mobile Phone">
+                        
+                    </div>
+         
+                    <div class="col-md-5"><br>
+                        <label for="Patient_age" class="form-label">Patient Age</label>
+                        <input type="text" id="Patient_age"   name="patient_age" class="form-control" placeholder="Patient_age">
+                        
+                    </div>
+        
+                    <div class="col-md-5"><br>
+                        <label for="hospital_name" class="form-label">Hospital Name</label>
+                        <input type="text" id="hospital_name" name="hospital_name" class="form-control" placeholder="hospital_name">
+                        
+                    </div>
+                    
+                    
+                    <div class="col-md-5"><br>
+                        <label for="when_need_blood" class="form-label">When Need Blood</label>
+                        <input type="text" id="when_need_blood" name="when_need_blood" class="form-control" placeholder="when_need_blood">
+                        
+                    </div>
+        
+                    
+                    <div class="col-md-5"><br>
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" id="address" name="address" class="form-control" placeholder="address">
+                        
+                    </div>
+                    <div class="col-md-10"><br>
+                        <label for="detais" class="form-label">Details</label>
+                        <textarea name="details" id="detais" cols="30" rows="5" class="form-control"></textarea>
+                        
+                    </div>
+                  
+                        
+                    <div class="col-md-4 mx-auto"><br>
+                    
+                        <button type="submit" class="btn btn-primary btn-lg">Post Your Request</button>
+                    </div>
+                   
+                    
+                </div>
+            </div>
+        
+    </form>
+</div>
+  
+</body>
+</html>
